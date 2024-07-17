@@ -114,7 +114,8 @@ while steps < max_steps + 1:
 
     # interact with the environment to get transitions of one trajectory and save them to the replay buffer
     while not done:
-        inputs = np.concatenate([state, desired_goal], axis=1)
+        inputs = np.concatenate([state, desired_goal], axis=0)
+        inputs = torch.tensor(inputs, dtype=torch.float32)
         action = agent.choose_action(inputs)
         noise = np.random.normal(0, max_action * 0.1, size=action_dim)
         action = np.clip(action + noise, -max_action, max_action)
@@ -174,7 +175,8 @@ while steps < max_steps + 1:
             score_eval = 0
             while not done_eval:
                 with torch.no_grad():
-                    inputs = np.concatenate([state_eval, desired_goal_eval], axis=1)
+                    inputs = np.concatenate([state_eval, desired_goal_eval], axis=0)
+                    inputs = torch.tensor(inputs, dtype=torch.float32)
                     action_eval = agent.choose_action(inputs)
                     obs_eval, reward_eval, terminated_eval, done_eval, info_eval = env_eval.step(action_eval)
                     state_eval = obs_eval['observation']
