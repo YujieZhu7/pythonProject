@@ -117,8 +117,8 @@ class Agent(object):
         self.critic_loss_history = []
         self.actor_loss_history = []
         # self.value_loss_history = []
-        self.BC_buffer_loss_history = []
-        self.BC_demos_loss_history = []
+        self.BC_loss_history = []
+        # self.BC_demos_loss_history = []
 
         self.method = method
         self.drop_rate = drop_rate
@@ -250,6 +250,7 @@ class Agent(object):
                 num_accept = mask.sum(dim=0)[0].detach().cpu().item()
                 num_total = self.batch_size_demo
                 BC_loss = F.mse_loss(torch.masked_select(demos_policy_actions, mask), torch.masked_select(demos_action, mask))
+                self.BC_loss_history.append(BC_loss.item())
 
                 actor_loss = -self.lmbda1 * Q.mean() + self.lmbda2 * BC_loss
                 self.actor_loss_history.append(actor_loss.item())

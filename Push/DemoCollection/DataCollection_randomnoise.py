@@ -4,7 +4,7 @@ import numpy as np
 import random
 import pickle
 
-import TD3_HER as TD3
+from pythonProject.Qfilter_HER.Algo import TD3_HER as TD3
 
 # do we need to standardise the inputs?
 clip_range = 5
@@ -60,7 +60,7 @@ goal_dim = env.observation_space['desired_goal'].shape[0]
 action_dim = env.action_space.shape[0]
 max_action = env.action_space.high[0]
 
-meanvar = np.load(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/Demo/TD3_HER_S5_update.npz")
+meanvar = np.load(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/Demo/TD3_HER_S5_update2.npz")
 states_agg = (meanvar['state_count'], meanvar['state_mean2'], meanvar['state_M2'])  # (count, mean, M2)
 goals_agg = (meanvar['goal_count'], meanvar['goal_mean2'], meanvar['goal_M2'])
 
@@ -72,10 +72,10 @@ success_history = []
 agent = TD3.Agent(state_dim, goal_dim, action_dim, max_action, hidden_dim=(256,256),
                   gamma=0.98, tau=0.005, lr=(1e-3,1e-3), batch_size=1024,
                   policy_noise = 0.2, noise_clip=0.5, policy_freq=2, device=device)
-agent.actor.load_state_dict(torch.load( f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/SaveModels/TD3_HER_expert_actor", map_location=device))
-agent.actor_target.load_state_dict(torch.load(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/SaveModels/TD3_HER_expert_actortarget", map_location=device))
-agent.critic.load_state_dict(torch.load(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/SaveModels/TD3_HER_expert_critic", map_location=device))
-agent.critic_target.load_state_dict(torch.load(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/SaveModels/TD3_HER_expert_critictarget", map_location=device))
+agent.actor.load_state_dict(torch.load( f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/SaveModels/{env_name}/TD3_HER_expert_actor2", map_location=device))
+agent.actor_target.load_state_dict(torch.load(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/SaveModels/{env_name}/TD3_HER_expert_actortarget2", map_location=device))
+agent.critic.load_state_dict(torch.load(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/SaveModels/{env_name}/TD3_HER_expert_critic2", map_location=device))
+agent.critic_target.load_state_dict(torch.load(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/SaveModels/{env_name}/TD3_HER_expert_critictarget2", map_location=device))
 
 
 rand_prob = 0.5
@@ -105,9 +105,9 @@ while traj < 100:
                 inputs = process_inputs(state, desired_goal, o_mean=state_stats[0], o_std=np.sqrt(state_stats[1]),
                                             g_mean=goal_stats[0], g_std=np.sqrt(goal_stats[1]))
                 action = agent.choose_action(inputs)
-                var = 0
-                noise = np.random.normal(0, max_action * var, size=action_dim)
-                action = np.clip(action + noise, -max_action, max_action)
+                # var = 1
+                # noise = np.random.normal(0, max_action * var, size=action_dim)
+                # action = np.clip(action + noise, -max_action, max_action)
             next_obs, reward, done_rb, done, info = env.step(action)
             next_state = next_obs['observation']
             next_desired_goal = next_obs['desired_goal']
@@ -126,7 +126,7 @@ while traj < 100:
 
 print("Average score of demonstrations = ", np.mean(score_history))
 print("Average success of demonstrations = ", np.mean(success_history))
-file_name = f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Data/{env_name}/DemoData.pkl"
+file_name = f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Data/{env_name}/DemoData_RanNoise0.5.pkl"
 open_file = open(file_name, "wb")
 pickle.dump(replay_buffer, open_file)
 open_file.close()

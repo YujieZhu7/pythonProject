@@ -4,7 +4,7 @@ import numpy as np
 import random
 import pickle
 
-from Qfilter_HER.Algo import TD3_HER as TD3
+from pythonProject.Qfilter_HER.Algo import TD3_HER as TD3
 
 # do we need to standardise the inputs?
 clip_range = 5

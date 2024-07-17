@@ -101,8 +101,8 @@ class Agent(object):
         self.critic_loss_history = []
         self.actor_loss_history = []
         self.value_loss_history = []
-        self.BC_buffer_loss_history = []
-        self.BC_demos_loss_history = []
+        self.BC_loss_history = []
+        # self.BC_demos_loss_history = []
 
         self.total_it = 0
 
@@ -186,9 +186,7 @@ class Agent(object):
                 num_accept = mask.sum(dim=0)[0].detach().cpu().item()
                 num_total = self.batch_size_demo
                 BC_loss = F.mse_loss(torch.masked_select(demos_policy_actions, mask), torch.masked_select(demos_action, mask))
-                # BC_loss = ((torch.ge(Q_dem, demos_Q) * torch.mean((demos_policy_actions - demos_action) ** 2, 1)).sum()
-                #            / (torch.ge(Q_dem, demos_Q).sum() + 1e-6))
-                # self.BC_demos_loss_history.append(BC_loss.item())
+                self.BC_loss_history.append(BC_loss.item())
                 actor_loss = -self.lmbda1 * Q.mean() + self.lmbda2 * BC_loss
                 self.actor_loss_history.append(actor_loss.item())
                 self.actor_optimizer.zero_grad()

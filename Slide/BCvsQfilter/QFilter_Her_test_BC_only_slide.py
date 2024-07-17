@@ -4,7 +4,7 @@ import torch
 import numpy as np
 import random
 import pickle
-from Qfilter_HER.Algo import TD3_HER_BC_only as TD3
+from pythonProject.Qfilter_HER.Algo import TD3_HER_BC_only as TD3
 
 # use the ensemble method first, then consider MC dropout
 
@@ -86,8 +86,6 @@ states_agg = (0, np.zeros(state_dim), np.zeros(state_dim))  # (count, mean, M2)
 goals_agg = (0, np.zeros(goal_dim), np.zeros(goal_dim))
 for i in range(len(dataset)):
     demos.append((dataset[i][0], dataset[i][1], dataset[i][2], dataset[i][3], dataset[i][4], dataset[i][5]))
-    # demos_states.append(dataset[i][0])
-    # demos_goals.append(dataset[i][4])
     states_agg = update(states_agg, np.array(dataset[i][0]))
     goals_agg = update(goals_agg, np.array(dataset[i][4]))
 
