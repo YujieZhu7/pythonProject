@@ -87,7 +87,7 @@ for i in range(len(dataset)):
     states_agg = update(states_agg, np.array(dataset[i][0]))
     goals_agg = update(goals_agg, np.array(dataset[i][4]))
 
-max_steps = 1e4
+max_steps = 3e4
 memory_size = 1e6  # 5e5 why memory_size is larger than max_step?
 step_eval = 1000
 
