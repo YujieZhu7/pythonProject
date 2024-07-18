@@ -182,9 +182,9 @@ while steps < max_steps + 1:
         next_state = next_observation['observation']
         next_obs = np.concatenate([next_state, substitute_goal])
 
-        substitute_reward = env.compute_reward(observation["achieved_goal"], substitute_goal, info)
-        substitute_terminated = env.compute_terminated(observation["achieved_goal"], substitute_goal, info)
-        substitute_truncated = env.compute_truncated(observation["achieved_goal"], substitute_goal, info)
+        substitute_reward = env.unwrapped.compute_reward(observation["achieved_goal"], substitute_goal, info)
+        substitute_terminated = env.unwrapped.compute_terminated(observation["achieved_goal"], substitute_goal, info)
+        substitute_truncated = env.unwrapped.compute_truncated(observation["achieved_goal"], substitute_goal, info)
         # done_HER = False  # done flag is always false ?what does this do?
         replay_buffer.append((state, action, substitute_reward, next_state, substitute_goal, substitute_terminated))
         if len(replay_buffer) > memory_size:
