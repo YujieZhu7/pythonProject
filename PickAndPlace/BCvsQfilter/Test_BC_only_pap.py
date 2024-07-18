@@ -4,7 +4,13 @@ import torch
 import numpy as np
 import random
 import pickle
-from Qfilter_HER.Algo import TD3_HER_BC_only as TD3
+
+import os
+# Get the parent directory path
+parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '../..'))
+# Add the parent directory to sys.path
+sys.path.insert(0, parent_dir)
+from QFilter_HER.Algo import TD3_HER_BC_only as TD3
 
 # use the ensemble method first, then consider MC dropout
 
@@ -75,7 +81,7 @@ obs_dim = state_dim + goal_dim
 action_dim = env.action_space.shape[0]
 max_action = env.action_space.high[0]
 # var=0.6
-open_file = open(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Data/{env_name}/DemoData_RanNoise0.1.pkl", "rb")
+open_file = open(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Data/{env_name}/DemoData.pkl", "rb")
 dataset = pickle.load(open_file)
 open_file.close()
 
@@ -222,5 +228,5 @@ while steps < max_steps + 1:
 
     episodes += 1
 
-np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/TD3_BC_only/RanNoise0.1/BC_S{seed}_score", score_history)
-np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/TD3_BC_only/RanNoise0.1/BC_S{seed}_sucess", success_history)
+np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/TD3_BC_only/Expert/BC_S{seed}_score", score_history)
+np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/TD3_BC_only/Expert/BC_S{seed}_sucess", success_history)
