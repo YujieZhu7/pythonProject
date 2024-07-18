@@ -4,6 +4,9 @@ import torch
 import numpy as np
 import random
 import pickle
+import os
+parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '../..'))
+sys.path.insert(0, parent_dir)
 from Qfilter_HER.Algo import TD3_HER_Qfilter_countdemo as TD3
 
 # use the ensemble method first, then consider MC dropout
@@ -75,7 +78,7 @@ obs_dim = state_dim + goal_dim
 action_dim = env.action_space.shape[0]
 max_action = env.action_space.high[0]
 # var=0.5
-open_file = open(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Data/{env_name}/DemoData_RanNoise0.1.pkl", "rb")
+open_file = open(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Data/{env_name}/DemoData.pkl", "rb")
 dataset = pickle.load(open_file)
 open_file.close()
 
@@ -243,7 +246,7 @@ while steps < max_steps + 1:
 
 
     episodes += 1
-np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/StdQfilter/RanNoise0.1/Qfilter_S{seed}_score", score_history)
-np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/StdQfilter/RanNoise0.1/Qfilter_S{seed}_success", success_history)
-np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/StdQfilter/RanNoise0.1/Qfilter_S{seed}_demoaccept",
+np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/StdQfilter/Expert/Qfilter_S{seed}_score", score_history)
+np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/StdQfilter/Expert/Qfilter_S{seed}_success", success_history)
+np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/StdQfilter/Expert/Qfilter_S{seed}_demoaccept",
         average_accept_demos)
