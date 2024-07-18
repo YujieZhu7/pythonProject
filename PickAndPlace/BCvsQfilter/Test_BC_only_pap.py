@@ -97,7 +97,7 @@ for i in range(len(dataset)):
     states_agg = update(states_agg, np.array(dataset[i][0]))
     goals_agg = update(goals_agg, np.array(dataset[i][4]))
 
-max_steps = 5e6
+max_steps = 2e6
 memory_size = 1e6
 # step_eval = 50
 
