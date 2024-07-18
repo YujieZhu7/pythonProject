@@ -57,7 +57,7 @@ env = gym.make('FetchPush-v2')
 env_train = gym.make('FetchPush-v2')
 env_eval = gym.make('FetchPush-v2')
 # Set seeds
-seed = 5
+seed = 10
 offset = 100
 env.reset(seed=seed)
 env.action_space.seed(seed)
