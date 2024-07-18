@@ -10,7 +10,7 @@ import os
 parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '../..'))
 # Add the parent directory to sys.path
 sys.path.insert(0, parent_dir)
-from QFilter_HER.Algo import TD3_HER_BC_only as TD3
+from Qfilter_HER.Algo import TD3_HER_BC_only as TD3
 
 # use the ensemble method first, then consider MC dropout
 
