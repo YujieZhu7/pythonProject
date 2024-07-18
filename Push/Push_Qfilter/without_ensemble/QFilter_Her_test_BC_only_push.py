@@ -224,3 +224,4 @@ while steps < max_steps + 1:
 
 np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/TD3_BC_only/noNoise/BC_S{seed}_score", score_history)
 np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/TD3_BC_only/noNoise/BC_S{seed}_sucess", success_history)
+np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/TD3_BC_only/noNoise/BC_S{seed}_BCL", agent.BC_loss_history)
