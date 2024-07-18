@@ -113,7 +113,7 @@ class Agent(object):
         for it in range(iterations):
             self.total_it += 1
             # minibatch
-            minibatch = random.sample(replay_buffer, self.batch_size_buffer)
+            minibatch = random.sample(replay_buffer, self.batch_size)
             state = np.array([d[0] for d in minibatch])
             action = torch.Tensor(np.array([d[1] for d in minibatch])).to(self.device)
             reward = torch.Tensor(np.array([d[2] for d in minibatch])).to(self.device)
