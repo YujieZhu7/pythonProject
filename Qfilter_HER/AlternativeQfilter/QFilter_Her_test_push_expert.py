@@ -116,6 +116,8 @@ eps_eval = 10  # Evaluate every 10 episodes
 agent = TD3.Agent(state_dim, goal_dim, action_dim, max_action, hidden_dim=(256, 256), lmbda1=0.001,
                   lmbda2=1 / 128, batch_size_buffer=1024, batch_size_demo=128, gamma=0.98, tau=0.005, lr=(1e-3, 1e-3),
                   policy_noise=0.2, noise_clip=0.5, policy_freq=2, device=device)
+agent.critic.load_state_dict(torch.load(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/SaveModels/{env_name}/PretrainExpert/TD3_pretrain_critic_steps1e4", map_location=device))
+agent.critic_target.load_state_dict(torch.load(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/SaveModels/{env_name}/PretrainExpert/TD3_pretrain_critictarget_steps1e4", map_location=device))
 
 # these normals are used to normalise during training
 # where is the normals been used? We have updated (count, mean, M2) using demos before, so no need to do this again?
@@ -243,9 +245,9 @@ while steps < max_steps + 1:
 
 
     episodes += 1
-np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/AltStdQfilter/noNoise/Qfilter_S{seed}_score", score_history)
-np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/AltStdQfilter/noNoise/Qfilter_S{seed}_success", success_history)
-np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/AltStdQfilter/noNoise/Qfilter_S{seed}_demoaccept",
+np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/AltStdQfilter/PretrainExpert/Qfilter_S{seed}_score", score_history)
+np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/AltStdQfilter/PretrainExpert/Qfilter_S{seed}_success", success_history)
+np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/AltStdQfilter/PretrainExpert/Qfilter_S{seed}_demoaccept",
         average_accept_demos)
-np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/AltStdQfilter/noNoise/Qfilter_S{seed}_BCL",
+np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/AltStdQfilter/PretrainExpert/Qfilter_S{seed}_BCL",
         agent.BC_loss_history)
