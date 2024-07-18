@@ -78,7 +78,7 @@ obs_dim = state_dim + goal_dim
 action_dim = env.action_space.shape[0]
 max_action = env.action_space.high[0]
 # var=0.5
-open_file = open(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Data/{env_name}/DemoData_test0.5+1.pkl", "rb")
+open_file = open(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Data/{env_name}/DemoData.pkl", "rb")
 dataset = pickle.load(open_file)
 open_file.close()
 
@@ -90,7 +90,7 @@ for i in range(len(dataset)):
     states_agg = update(states_agg, np.array(dataset[i][0]))
     goals_agg = update(goals_agg, np.array(dataset[i][4]))
 
-max_steps = 2e6
+max_steps = 1e6
 memory_size = 1e6
 
 score_history = []
@@ -149,7 +149,7 @@ while steps < max_steps + 1:
         print("Episode", episodes, "Env Steps", steps, "Score %.2f" % score_eval, "Success rate %.2f" % fin_eval)
 
     episodes += 1
-np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/BC/RandGausNoise/S{seed}_score", score_history)
-np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/BC/RandGausNoise/S{seed}_success", success_history)
-np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/BC/RandGausNoise/S{seed}_loss", agent.actor_loss_history)
+np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/BC/noNoise/S{seed}_score", score_history)
+np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/BC/noNoise/S{seed}_success", success_history)
+np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/BC/noNoise/S{seed}_loss", agent.actor_loss_history)
 
