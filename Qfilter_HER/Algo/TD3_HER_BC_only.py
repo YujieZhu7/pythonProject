@@ -101,8 +101,7 @@ class Agent(object):
         self.critic_loss_history = []
         self.actor_loss_history = []
         self.value_loss_history = []
-        self.BC_buffer_loss_history = []
-        self.BC_demos_loss_history = []
+        self.BC_loss_history = []
 
         self.total_it = 0
 
@@ -181,8 +180,7 @@ class Agent(object):
                 # demos_Q = self.critic.Q1(demos_input, demos_policy_actions)
                 # Q_dem = self.critic.Q1(demos_input, demos_action)
                 BC_loss = F.mse_loss(demos_policy_actions, demos_action)
-
-                # self.BC_demos_loss_history.append(BC_loss.item())
+                self.BC_loss_history.append(BC_loss.item())
                 actor_loss = -self.lmbda1 * Q.mean() + self.lmbda2 * BC_loss
                 self.actor_loss_history.append(actor_loss.item())
                 self.actor_optimizer.zero_grad()
