@@ -87,7 +87,7 @@ for i in range(len(dataset)):
     states_agg = update(states_agg, np.array(dataset[i][0]))
     goals_agg = update(goals_agg, np.array(dataset[i][4]))
 
-max_steps = 3e4
+max_steps = 1.75e4
 memory_size = 1e6  # 5e5 why memory_size is larger than max_step?
 step_eval = 1000
 
@@ -231,7 +231,7 @@ while steps < max_steps + 1:
 
 # np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/Demo/TD3_HER_S{seed}_score", score_history)
 # np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/Demo/TD3_HER_S{seed}_success", success_history)
-np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/StdQfilter/noNoise/Pretrain/pretrainQ_loss_steps1e4", agent.critic_loss_history)
+# np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/StdQfilter/noNoise/Pretrain/pretrainQ_loss_steps1e4", agent.critic_loss_history)
 torch.save(agent.critic.state_dict(),
                                    f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/SaveModels/{env_name}/PretrainExpert/TD3_pretrain_critic_steps1e4")
 torch.save(agent.critic_target.state_dict(),
