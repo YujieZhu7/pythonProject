@@ -63,7 +63,7 @@ goal_dim = env.observation_space['desired_goal'].shape[0]
 action_dim = env.action_space.shape[0]
 max_action = env.action_space.high[0]
 
-meanvar = np.load(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/Demo/TD3_HER_S5_update.npz")
+meanvar = np.load(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/Demo/TD3_HER_S5_update.npz")
 states_agg = (meanvar['state_count'], meanvar['state_mean2'], meanvar['state_M2'])  # (count, mean, M2)
 goals_agg = (meanvar['goal_count'], meanvar['goal_mean2'], meanvar['goal_M2'])
 
