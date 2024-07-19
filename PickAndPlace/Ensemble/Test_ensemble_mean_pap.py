@@ -4,6 +4,10 @@ import torch
 import numpy as np
 import random
 import pickle
+
+import os
+parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '../..'))
+sys.path.insert(0, parent_dir)
 from Qfilter_HER.Algo import TD3_HER_Qfilter_ensemble as TD3
 
 # use the ensemble method first, then consider MC dropout
@@ -240,4 +244,6 @@ np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Resu
 np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/RanNoise0.1/{method}/EnsSize_{ensemble_size}_S{seed}_success", success_history)
 np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/RanNoise0.1/{method}/EnsSize_{ensemble_size}_S{seed}_demoaccept",
         average_accept_demos)
+np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/RanNoise0.1/{method}/EnsSize_{ensemble_size}_S{seed}_BCL",
+        agent.BC_loss_history)
 
