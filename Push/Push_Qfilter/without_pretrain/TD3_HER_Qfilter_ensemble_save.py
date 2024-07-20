@@ -224,6 +224,8 @@ class Agent(object):
                     Q_dem_set = self.critic(demos_input, demos_action)
                     demos_Q = torch.mean(demos_Q_set, dim=0)
                     Q_dem = torch.mean(Q_dem_set, dim=0)
+                    demos_Q_std = torch.std(demos_Q_set, dim=0)
+                    Q_dem_std = torch.std(Q_dem_set, dim=0)
                     self.policy_qstd.append(demos_Q_std[0])
                     self.demos_qstd.append(Q_dem_std[0])
                 if self.method == "Minimum":
