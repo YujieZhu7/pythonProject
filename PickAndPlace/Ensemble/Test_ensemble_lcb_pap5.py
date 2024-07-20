@@ -56,7 +56,7 @@ env_name = 'FetchPickAndPlace'
 env = gym.make('FetchPickAndPlace-v2')
 env_train = gym.make('FetchPickAndPlace-v2')
 env_eval = gym.make('FetchPickAndPlace-v2')
-method = "LCB0.5"
+method = "LCB"
 if method == "MCDropout":
     drop_rate = 0.1
 else:
