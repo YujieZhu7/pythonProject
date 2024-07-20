@@ -91,7 +91,7 @@ for i in range(len(dataset)):
     states_agg = update(states_agg, np.array(dataset[i][0]))
     goals_agg = update(goals_agg, np.array(dataset[i][4]))
 
-max_steps = 1.5e4  # 4e6
+max_steps = 1e4  # 4e6
 memory_size = 1e6
 
 batch_size = 1024
@@ -249,6 +249,6 @@ while steps < max_steps + 1:
 np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/RandGausNoise/{method}/EnsSize_{ensemble_size}_S{seed}_BCL",
         agent.BC_loss_history)
 np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/RandGausNoise/{method}/EnsSize_{ensemble_size}_S{seed}_policyQstd",
-        agent.policy_Qstd)
+        policy_Qstd)
 np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/RandGausNoise/{method}/EnsSize_{ensemble_size}_S{seed}_demosQstd",
-        agent.demos_Qstd)
+        demos_Qstd)
