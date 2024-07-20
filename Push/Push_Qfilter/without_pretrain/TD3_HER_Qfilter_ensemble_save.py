@@ -224,6 +224,8 @@ class Agent(object):
                     Q_dem_set = self.critic(demos_input, demos_action)
                     demos_Q = torch.mean(demos_Q_set, dim=0)
                     Q_dem = torch.mean(Q_dem_set, dim=0)
+                    self.policy_qstd.append(demos_Q_std[0])
+                    self.demos_qstd.append(Q_dem_std[0])
                 if self.method == "Minimum":
                     demos_Q = self.critic(demos_input, demos_policy_actions).min(0)[0]
                     Q_dem = self.critic(demos_input, demos_action).min(0)[0]
@@ -248,8 +250,7 @@ class Agent(object):
                 self.BC_loss_history.append(BC_loss.item())
                 # mask2 = torch.ge(Q_dem, demos_Q)
                 # Q_diff = torch.mean(torch.masked_select(Q_dem, mask2)-torch.masked_select(demos_Q, mask2)).detach().cpu().item()
-                self.policy_qstd.append(demos_Q_std[0])
-                self.demos_qstd.append(Q_dem_std[0])
+                
 
                 actor_loss = -self.lmbda1 * Q.mean() + self.lmbda2 * BC_loss
                 self.actor_loss_history.append(actor_loss.item())
