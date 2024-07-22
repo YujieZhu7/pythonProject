@@ -262,10 +262,13 @@ plt.savefig('/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/F
 plt.show()
 plt.close()
 
+first_BCL_s5 = np.load(
+    f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/RanNoise0.1/First/EnsSize_10_S5_BCL.npy")
 lcb_BCL_s5 = np.load(
     f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/RanNoise0.1/LCB/EnsSize_10_S5_BCL.npy")
 mean_BCL_s5 = np.load(
     f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/RanNoise0.1/Mean/EnsSize_10_S5_BCL.npy")
+plt.plot(x, first_BCL_s5[:10000:50], color='blue', label='First')
 plt.plot(x, lcb_BCL_s5[:10000:50], color='green', label='LCB')
 plt.plot(x, mean_BCL_s5[:10000:50], color='red', label='Mean')
 plt.title('BC Loss')
