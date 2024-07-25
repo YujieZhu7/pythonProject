@@ -239,6 +239,14 @@ class Agent(object):
                     Q_dem_std = torch.std(Q_dem_set, dim=0)
                     demos_Q = torch.mean(demos_Q_set, dim=0) - 0.5*demos_Q_std
                     Q_dem = torch.mean(Q_dem_set, dim=0) - 0.5 * Q_dem_std
+
+                if self.method == "UCB":
+                    demos_Q_set = self.critic(demos_input, demos_policy_actions)
+                    Q_dem_set = self.critic(demos_input, demos_action)
+                    demos_Q_std = torch.std(demos_Q_set, dim=0)
+                    Q_dem_std = torch.std(Q_dem_set, dim=0)
+                    demos_Q = torch.mean(demos_Q_set, dim=0) + 2*demos_Q_std
+                    Q_dem = torch.mean(Q_dem_set, dim=0) + 2 * Q_dem_std
                 if self.method == "ModifiedLCB":
                     demos_Q_set = self.critic(demos_input, demos_policy_actions)
                     Q_dem_set = self.critic(demos_input, demos_action)
