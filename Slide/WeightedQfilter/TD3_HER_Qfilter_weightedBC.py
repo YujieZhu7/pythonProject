@@ -269,8 +269,8 @@ class Agent(object):
                 selected_actions = torch.masked_select(demos_action, mask)
                 squared_errors = (selected_policy_actions - selected_actions) ** 2
                 weighted_squared_errors = weights * squared_errors
-                BC_loss = weighted_squared_errors.sum() / weights.sum()
-                print(weights.sum())
+                BC_loss = weighted_squared_errors.sum()  # / weights.sum()
+                # weight.sum() = 1
                 self.BC_loss_history.append(BC_loss.item())
                 total_BC_loss = F.mse_loss(demos_policy_actions, demos_action)
                 self.total_BC_loss_history.append(total_BC_loss.item())
