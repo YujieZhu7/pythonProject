@@ -257,8 +257,9 @@ class Agent(object):
                 mask = torch.ge(Q_dem, demos_Q).reshape(self.batch_size_demo, 1).repeat(1, self.action_dim)
                 num_accept = mask.sum(dim=0)[0].detach().cpu().item()
                 num_total = self.batch_size_demo
-                Q_dem_subset = Q_dem_set[mask]
-                demos_Q_subset = demos_Q_set[mask]
+                mask2 = torch.ge(Q_dem, demos_Q)
+                Q_dem_subset = Q_dem_set[mask2]
+                demos_Q_subset = demos_Q_set[mask2]
                 Qdiff = Q_dem_subset - demos_Q_subset
                 meanQdiff = Qdiff.sum()/num_accept
                 weights = Qdiff/(meanQdiff*num_accept)
