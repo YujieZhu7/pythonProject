@@ -243,4 +243,8 @@ np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Resu
 np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/RandGausNoise/{method}/EnsSize_{ensemble_size}_S{seed}_success", success_history)
 np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/RandGausNoise/{method}/EnsSize_{ensemble_size}_S{seed}_demoaccept",
         average_accept_demos)
+np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/RandGausNoise/{method}/EnsSize_{ensemble_size}_S{seed}_BCL",
+        agent.BC_loss_history)
+np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/RandGausNoise/{method}/EnsSize_{ensemble_size}_S{seed}_totalBCL",
+        agent.total_BC_loss_history)
 
