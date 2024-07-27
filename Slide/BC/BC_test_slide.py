@@ -90,7 +90,7 @@ for i in range(len(dataset)):
     states_agg = update(states_agg, np.array(dataset[i][0]))
     goals_agg = update(goals_agg, np.array(dataset[i][4]))
 
-max_steps = 5e5
+max_steps = 2e6
 
 score_history = []
 success_history = []
