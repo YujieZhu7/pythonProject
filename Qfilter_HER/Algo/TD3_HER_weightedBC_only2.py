@@ -184,10 +184,9 @@ class Agent(object):
                 weights = Qdiff / (sumQdiff*self.action_dim)
                 weights = weights.reshape(self.batch_size_demo, 1).repeat(1, self.action_dim)
                 squared_errors = (demos_policy_actions - demos_action)**2
-                print(demos_policy_actions.shape)
-                print(squared_errors.shape)
                 weighted_squared_errors = weights * squared_errors
                 BC_loss = weighted_squared_errors.sum()
+                print(BC_loss.shape)
                 # print(weights.sum())
 
                 # BC_loss = F.mse_loss(demos_policy_actions, demos_action)
