@@ -186,7 +186,7 @@ class Agent(object):
                 squared_errors = (demos_policy_actions - demos_action)**2
                 weighted_squared_errors = weights * squared_errors
                 BC_loss = weighted_squared_errors.sum()
-                print(weights.sum())
+                # print(weights.sum())
 
                 # BC_loss = F.mse_loss(demos_policy_actions, demos_action)
                 self.BC_loss_history.append(BC_loss.item())
