@@ -179,7 +179,7 @@ class Agent(object):
                 demos_policy_actions = self.actor(demos_input)
                 demos_Q = self.critic.Q1(demos_input, demos_policy_actions)
                 Q_dem = self.critic.Q1(demos_input, demos_action)
-                Qdiff = Q_dem - demos_Q
+                Qdiff = torch.abs(Q_dem - demos_Q)
                 sumQdiff = Qdiff.sum()
                 weights = Qdiff / (sumQdiff*self.action_dim)
                 weights = weights.reshape(self.batch_size_demo, 1).repeat(1, self.action_dim)
