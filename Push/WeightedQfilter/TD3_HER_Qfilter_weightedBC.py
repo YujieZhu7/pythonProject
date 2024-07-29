@@ -260,7 +260,7 @@ class Agent(object):
                 mask2 = torch.ge(Q_dem, demos_Q)
                 Q_dem_subset = Q_dem[mask2]
                 demos_Q_subset = demos_Q[mask2]
-                Qdiff = Q_dem_subset - demos_Q_subset
+                Qdiff = torch.abs(Q_dem_subset - demos_Q_subset)
                 meanQdiff = Qdiff.sum()/num_accept
                 weights = Qdiff/(meanQdiff*num_accept*self.action_dim)
                 weights = weights.repeat(1, self.action_dim)
