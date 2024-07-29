@@ -261,8 +261,8 @@ class Agent(object):
                 Q_dem_subset = Q_dem[mask2]
                 demos_Q_subset = demos_Q[mask2]
                 Qdiff = torch.abs(Q_dem_subset - demos_Q_subset)
-                meanQdiff = Qdiff.sum()/num_accept
-                weights = Qdiff/(meanQdiff*num_accept*self.action_dim)
+                # meanQdiff = Qdiff.sum()/num_accept
+                weights = Qdiff/(Qdiff.sum()*self.action_dim)
                 weights = weights.repeat(1, self.action_dim)
 
                 selected_policy_actions = torch.masked_select(demos_policy_actions, mask)
