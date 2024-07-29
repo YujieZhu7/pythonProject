@@ -246,5 +246,5 @@ np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Resu
 np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/RanNoise0.1/{method}/EnsSize_{ensemble_size}_S{seed}_BCL",
         agent.BC_loss_history)
 np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/RanNoise0.1/{method}/EnsSize_{ensemble_size}_S{seed}_totalBCL",
-        agent.totalBC_loss_history)
+        agent.total_BC_loss_history)
 
