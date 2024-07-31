@@ -102,7 +102,7 @@ class Agent(object):
         self.actor_loss_history = []
         self.value_loss_history = []
         self.BC_loss_history = []
-        # self.BC_demos_loss_history = []
+        self.total_BC_loss_history = []
 
         self.total_it = 0
 
@@ -187,6 +187,9 @@ class Agent(object):
                 num_total = self.batch_size_demo
                 BC_loss = F.mse_loss(torch.masked_select(demos_policy_actions, mask), torch.masked_select(demos_action, mask))
                 self.BC_loss_history.append(BC_loss.item())
+                total_BC_loss = F.mse_loss(demos_policy_actions, demos_action)
+                self.total_BC_loss_history.append(total_BC_loss.item())
+                
                 actor_loss = -self.lmbda1 * Q.mean() + self.lmbda2 * BC_loss
                 self.actor_loss_history.append(actor_loss.item())
                 self.actor_optimizer.zero_grad()
