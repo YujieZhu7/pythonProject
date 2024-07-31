@@ -60,7 +60,7 @@ env_eval = gym.make('FetchPickAndPlace-v2')
 # steps_accept = 0
 # ensemble_size = 2
 # Set seeds
-seed = 1
+seed = 4
 offset = 100
 env.reset(seed=seed)
 env.action_space.seed(seed)
@@ -94,7 +94,7 @@ for i in range(len(dataset)):
     states_agg = update(states_agg, np.array(dataset[i][0]))
     goals_agg = update(goals_agg, np.array(dataset[i][4]))
 
-max_steps = 2e6
+max_steps = 5e6
 memory_size = 1e6
 # step_eval = 50
 
@@ -252,3 +252,5 @@ np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Resu
         average_accept_demos)
 np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/StdQfilter/Expert/Qfilter_S{seed}_BCL",
         agent.BC_loss_history)
+np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/StdQfilter/Expert/Qfilter_S{seed}_totalBCL",
+        agent.total_BC_loss_history)
