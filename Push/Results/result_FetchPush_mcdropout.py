@@ -29,7 +29,6 @@ plt.plot(x, mcdropout_mean_score2_3[:8000:40], color='orange', label='Mean_dropo
 # plt.plot(x, mcdropout_first_score4_3[:8000:40], color='blue', label='mcdropout_first_4hidden_0.03')
 # plt.plot(x, mcdropout_mean_score4_3[:8000:40], color='red', label='mcdropout_mean_4hidden_0.03')
 
-
 plt.title('Scores')
 plt.xlabel('Environment interactions (4e6)')
 plt.ylabel('Score')
@@ -49,16 +48,16 @@ mcdropout_lcb5_score2 = np.load(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmPro
 plt.plot(x, NoBC_score[:8000:40], color='black', label='NoBC')
 plt.plot(x, BC_only_score[:8000:40], color='green', label='BC_only')
 plt.plot(x, Qfilter_score[:8000:40], color='purple', label='Qfilter')
-plt.plot(x, mcdropout_first_score2[:8000:40], color='blue', label='mcdropout_first')
-plt.plot(x, mcdropout_mean_score2[:8000:40], color='red', label='mcdropout_mean')
-plt.plot(x, mcdropout_lcb_score2[:8000:40], color='grey', label='mcdropout_lcb')
-plt.plot(x, mcdropout_lcb5_score2[:8000:40], color='orange', label='mcdropout_lcb0.5')
+plt.plot(x, mcdropout_first_score2[:8000:40], color='blue', label='MCdropout_first')
+plt.plot(x, mcdropout_mean_score2[:8000:40], color='red', label='MCdropout_mean')
+plt.plot(x, mcdropout_lcb_score2[:8000:40], color='grey', label='MCdropout_lcb')
+# plt.plot(x, mcdropout_lcb5_score2[:8000:40], color='orange', label='mcdropout_lcb0.5')
 
-plt.title('Scores for 2 hidden layers with dropout rate 0.01')
+plt.title('Scores')  # with dropout rate 0.01
 plt.xlabel('Environment interactions (4e6)')
 plt.ylabel('Score')
 plt.legend()
-# plt.savefig('/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Figure/Push/Noise0.5+1/scores_difflayers_dropout0.01.png')
+plt.savefig('/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Figure/Push/Noise0.5+1/Dropout/scores_dropout0.01.png')
 plt.show()
 plt.close()
 
@@ -70,16 +69,61 @@ mcdropout_lcb_demoAccept2 = np.load(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/Pychar
 mcdropout_lcb5_demoAccept2 = np.load(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/DropoutQfilter/hidden2/DropoutRate0.01/LCB0.5/0.5+1EnsSize_2_S5_demoaccept.npy")
 
 plt.plot(x, Qfilter_demoAccept[:8000:40], color='purple', label='Qfilter')
-plt.plot(x, mcdropout_first_demoAccept2[:8000:40], color='blue', label='mcdropout_first')
-plt.plot(x, mcdropout_mean_demoAccept2[:8000:40], color='red', label='mcdropout_mean')
-plt.plot(x, mcdropout_lcb_demoAccept2[:8000:40], color='grey', label='mcdropout_lcb')
-plt.plot(x, mcdropout_lcb5_demoAccept2[:8000:40], color='orange', label='mcdropout_lcb0.5')
+plt.plot(x, mcdropout_first_demoAccept2[:8000:40], color='blue', label='MCdropout_first')
+plt.plot(x, mcdropout_mean_demoAccept2[:8000:40], color='red', label=MCcdropout_mean')
+plt.plot(x, mcdropout_lcb_demoAccept2[:8000:40], color='grey', label='MCdropout_lcb')
+# plt.plot(x, mcdropout_lcb5_demoAccept2[:8000:40], color='orange', label='mcdropout_lcb0.5')
 
 plt.title('Acceptance rate of demonstrations')
 plt.xlabel('Environment interactions (4e6)')
 plt.ylabel('Acceptance rate')
 plt.legend()
-# plt.savefig('/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Figure/Push/Noise0.5+1/demoaccept_diffdropoutrate.png')
+plt.savefig('/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Figure/Push/Noise0.5+1/demoaccept_dropoutrate0.01.png')
+plt.show()
+plt.close()
+
+NoBC_score = np.load(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/Demo/TD3_HER_S5_score2.npy")
+BC_only_score = np.load(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/TD3_BC_only/RandGausNoise/0.5+1BC_S5_score.npy")
+Qfilter_score = np.load(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/StdQfilter/RandGausNoise/0.5+1Qfilter_S5_score.npy")
+mcdropout_mean_score2 = np.load(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/DropoutQfilter/hidden2/DropoutRate0.03/Mean/0.5+1EnsSize_2_S5_score.npy")
+mcdropout_first_score2 = np.load(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/DropoutQfilter/hidden2/DropoutRate0.03/First/0.5+1EnsSize_2_S5_score.npy")
+mcdropout_lcb_score2 = np.load(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/DropoutQfilter/hidden2/DropoutRate0.03/LCB/0.5+1EnsSize_2_S5_score.npy")
+# mcdropout_lcb5_score2 = np.load(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/DropoutQfilter/hidden2/DropoutRate0.01/LCB0.5/0.5+1EnsSize_2_S5_score.npy")
+
+plt.plot(x, NoBC_score[:8000:40], color='black', label='NoBC')
+plt.plot(x, BC_only_score[:8000:40], color='green', label='BC_only')
+plt.plot(x, Qfilter_score[:8000:40], color='purple', label='Qfilter')
+plt.plot(x, mcdropout_first_score2[:8000:40], color='blue', label='MCdropout_first')
+plt.plot(x, mcdropout_mean_score2[:8000:40], color='red', label='MCdropout_mean')
+plt.plot(x, mcdropout_lcb_score2[:8000:40], color='grey', label='MCdropout_lcb')
+# plt.plot(x, mcdropout_lcb5_score2[:8000:40], color='orange', label='mcdropout_lcb0.5')
+
+plt.title('Scores')  # with dropout rate 0.01
+plt.xlabel('Environment interactions (4e6)')
+plt.ylabel('Score')
+plt.legend()
+plt.savefig('/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Figure/Push/Noise0.5+1/Dropout/scores_dropout0.03.png')
+plt.show()
+plt.close()
+
+
+Qfilter_demoAccept = np.load(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/StdQfilter/RandGausNoise/0.5+1Qfilter_S5_demoaccept.npy")
+mcdropout_mean_demoAccept2 = np.load(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/DropoutQfilter/hidden2/DropoutRate0.03/Mean/0.5+1EnsSize_2_S5_demoaccept.npy")
+mcdropout_first_demoAccept2 = np.load(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/DropoutQfilter/hidden2/DropoutRate0.03/First/0.5+1EnsSize_2_S5_demoaccept.npy")
+mcdropout_lcb_demoAccept2 = np.load(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/DropoutQfilter/hidden2/DropoutRate0.03/LCB/0.5+1EnsSize_2_S5_demoaccept.npy")
+# mcdropout_lcb5_demoAccept2 = np.load(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/DropoutQfilter/hidden2/DropoutRate0.01/LCB0.5/0.5+1EnsSize_2_S5_demoaccept.npy")
+
+plt.plot(x, Qfilter_demoAccept[:8000:40], color='purple', label='Qfilter')
+plt.plot(x, mcdropout_first_demoAccept2[:8000:40], color='blue', label='MCdropout_first')
+plt.plot(x, mcdropout_mean_demoAccept2[:8000:40], color='red', label=MCcdropout_mean')
+plt.plot(x, mcdropout_lcb_demoAccept2[:8000:40], color='grey', label='MCdropout_lcb')
+# plt.plot(x, mcdropout_lcb5_demoAccept2[:8000:40], color='orange', label='mcdropout_lcb0.5')
+
+plt.title('Acceptance rate of demonstrations')
+plt.xlabel('Environment interactions (4e6)')
+plt.ylabel('Acceptance rate')
+plt.legend()
+plt.savefig('/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Figure/Push/Noise0.5+1/demoaccept_dropoutrate0.03.png')
 plt.show()
 plt.close()
 
