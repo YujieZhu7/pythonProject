@@ -78,7 +78,7 @@ obs_dim = state_dim + goal_dim
 action_dim = env.action_space.shape[0]
 max_action = env.action_space.high[0]
 # var=0.5
-open_file = open(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Data/{env_name}/DemoData.pkl", "rb")
+open_file = open(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Data/{env_name}/DemoData_RanNoise0.1.pkl", "rb")
 dataset = pickle.load(open_file)
 open_file.close()
 
@@ -246,11 +246,11 @@ while steps < max_steps + 1:
 
 
     episodes += 1
-np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/StdQfilter/Expert/Qfilter_S{seed}_score", score_history)
-np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/StdQfilter/Expert/Qfilter_S{seed}_success", success_history)
-np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/StdQfilter/Expert/Qfilter_S{seed}_demoaccept",
+np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/StdQfilter/RanNoise0.1/Qfilter_S{seed}_score", score_history)
+np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/StdQfilter/RanNoise0.1/Qfilter_S{seed}_success", success_history)
+np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/StdQfilter/RanNoise0.1/Qfilter_S{seed}_demoaccept",
         average_accept_demos)
-np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/StdQfilter/Expert/Qfilter_S{seed}_BCL",
+np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/StdQfilter/RanNoise0.1/Qfilter_S{seed}_BCL",
         agent.BC_loss_history)
-np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/StdQfilter/Expert/Qfilter_S{seed}_totalBCL",
+np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/StdQfilter/RanNoise0.1/Qfilter_S{seed}_totalBCL",
         agent.total_BC_loss_history)
