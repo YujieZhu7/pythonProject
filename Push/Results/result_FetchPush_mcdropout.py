@@ -70,7 +70,7 @@ mcdropout_lcb5_demoAccept2 = np.load(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/Pycha
 
 plt.plot(x, Qfilter_demoAccept[:8000:40], color='purple', label='Qfilter')
 plt.plot(x, mcdropout_first_demoAccept2[:8000:40], color='blue', label='MCdropout_first')
-plt.plot(x, mcdropout_mean_demoAccept2[:8000:40], color='red', label=MCcdropout_mean')
+plt.plot(x, mcdropout_mean_demoAccept2[:8000:40], color='red', label='MCcdropout_mean')
 plt.plot(x, mcdropout_lcb_demoAccept2[:8000:40], color='grey', label='MCdropout_lcb')
 # plt.plot(x, mcdropout_lcb5_demoAccept2[:8000:40], color='orange', label='mcdropout_lcb0.5')
 
@@ -115,7 +115,7 @@ mcdropout_lcb_demoAccept2 = np.load(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/Pychar
 
 plt.plot(x, Qfilter_demoAccept[:8000:40], color='purple', label='Qfilter')
 plt.plot(x, mcdropout_first_demoAccept2[:8000:40], color='blue', label='MCdropout_first')
-plt.plot(x, mcdropout_mean_demoAccept2[:8000:40], color='red', label=MCcdropout_mean')
+plt.plot(x, mcdropout_mean_demoAccept2[:8000:40], color='red', label='MCcdropout_mean')
 plt.plot(x, mcdropout_lcb_demoAccept2[:8000:40], color='grey', label='MCdropout_lcb')
 # plt.plot(x, mcdropout_lcb5_demoAccept2[:8000:40], color='orange', label='mcdropout_lcb0.5')
 
