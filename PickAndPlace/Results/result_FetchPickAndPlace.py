@@ -145,7 +145,7 @@ plt.plot(x, mean_score_s5[:10000:50], color='red', alpha=0.2)
 
 # plt.plot(x, min_score_s1[:10000:50], color='orange', label='Min')
 plt.plot(x, lcb_score_mean[:10000:50], color='green', label='LCB')
-plt.plot(x, first_score_mean[:10000:50], color='blue', label='Qfilter')
+plt.plot(x, first_score_mean[:10000:50], color='blue', label='First')
 plt.plot(x, mean_score_mean[:10000:50], color='red', label='Mean')
 # plt.plot(x, lcb5_score_mean[:10000:50], color='grey', label='LCB0.5')
 
