@@ -269,7 +269,7 @@ plt.plot(x, success_min_mean[1::20], color='orange', label='Minimum')
 plt.plot(x, success_lcb_mean[1::20], color='green', label='LCB')
 
 plt.title('Success rate of demonstrations')
-plt.xlabel('Environment interactions (2e6)')
+plt.xlabel('Environment interactions (4e6)')
 plt.ylabel('Success rate')
 plt.legend()
 plt.savefig('/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Figure/Push/Noise0.5+1/success_multiseeds.png')
