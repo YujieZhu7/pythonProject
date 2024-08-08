@@ -187,7 +187,7 @@ score_lcb_s4 = np.load(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pyt
 score_lcb_s5 = np.load(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/RandGausNoise/LCB/EnsSize_10_S5_score.npy")
 score_lcb_mean = (score_lcb_s1+score_lcb_s2+score_lcb_s3+score_lcb_s4+score_lcb_s5)/5
 
-Ens10new_s5 = np.load(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/RandGausNoise/MeanNone/EnsSize_10_S5_score.npy")
+# Ens10new_s5 = np.load(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/RandGausNoise/MeanNone/EnsSize_10_S5_score.npy")
 
 plt.plot(x, score_first_s1[1::20], color='blue', alpha=0.2)
 plt.plot(x, score_first_s2[1::20], color='blue', alpha=0.2)
@@ -217,7 +217,7 @@ plt.plot(x, score_first_mean[1::20], color='blue', label='First')
 plt.plot(x, score_mean_mean[1::20], color='red', label='Mean')
 plt.plot(x, score_min_mean[1::20], color='orange', label='Minimum')
 plt.plot(x, score_lcb_mean[1::20], color='green', label='LCB')
-plt.plot(x, Ens10new_s5[1::20], color='pink', label='NEW')
+# plt.plot(x, Ens10new_s5[1::20], color='pink', label='NEW')
 
 plt.title('Scores')
 plt.xlabel('Environment interactions (4e6)')
