@@ -87,7 +87,7 @@ first_score_s5 = np.load(
     f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/RanNoise0.1/First/EnsSize_10_S5_score.npy")
 first_score_mean = (first_score_s1 + first_score_s2 + first_score_s3 + first_score_s4 + first_score_s5) / 5
 
-min_score_s1 = np.load(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/RanNoise0.1/Minimum/EnsSize_10_S1_score.npy")
+# min_score_s1 = np.load(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/RanNoise0.1/Minimum/EnsSize_10_S1_score.npy")
 
 lcb_score_s1 = np.load(
     f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/RanNoise0.1/LCB/EnsSize_10_S1_score.npy")
@@ -133,7 +133,7 @@ plt.plot(x, mean_score_s5[:10000:50], color='red', alpha=0.2)
 
 plt.plot(x, first_score_mean[:10000:50], color='blue', label='Qfilter')
 plt.plot(x, mean_score_mean[:10000:50], color='red', label='Mean')
-plt.plot(x, min_score_s1[:10000:50], color='orange', label='Minimum')
+# plt.plot(x, min_score_s1[:10000:50], color='orange', label='Minimum')
 plt.plot(x, lcb_score_mean[:10000:50], color='green', label='LCB')
 
 plt.title('Scores')
@@ -143,29 +143,72 @@ plt.legend()
 plt.savefig('/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Figure/Slide/RanNoise0.1/scores_multiseeds.png')
 plt.show()
 plt.close()
-#
-# x = np.arange(0, 5, 0.05)
-# first_success = np.load(
-#     f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/noNoise/First/EnsSize_10_S5_success.npy")
-# mean_success = np.load(
-#     f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/noNoise/Mean/EnsSize_10_S5_success.npy")
-# lcb_success = np.load(
-#     f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/noNoise/LCB/EnsSize_10_S5_success.npy")
-# # modifiedlcb_success = np.load(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/Noise0.2/ModifiedLCB/EnsSize_10_S5_success.npy")
-# # newfirst_score = np.load(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/Noise0.2/NewFirst/NEW_EnsSize_10_S5_success.npy")
-# plt.plot(x, first_success[:10000:100], color='blue', label='First')
-# plt.plot(x, mean_success[:10000:100], color='red', label='Mean')
-# plt.plot(x, lcb_success[:10000:100], color='green', label='LCB')
-# # plt.plot(x, modifiedlcb_success[:10000:100], color='red', label='ModifiedLCB')
-# plt.title('Success Rate')
-# plt.xlabel('Environment interactions')
-# plt.ylabel('Success Rate')
-# plt.legend()
-# plt.savefig('/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Figure/Slide/success_noNoise.png')
-# plt.show()
-#
-#
-# x = np.arange(0, 5, 0.025)
+
+first_success_s1 = np.load(
+    f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/RanNoise0.1/First/EnsSize_10_S1_success.npy")
+first_success_s2 = np.load(
+    f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/RanNoise0.1/First/EnsSize_10_S2_success.npy")
+first_success_s3 = np.load(
+    f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/RanNoise0.1/First/EnsSize_10_S3_success.npy")
+first_success_s4 = np.load(
+    f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/RanNoise0.1/First/EnsSize_10_S4_success.npy")
+first_success_s5 = np.load(
+    f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/RanNoise0.1/First/EnsSize_10_S5_success.npy")
+first_success_mean = (first_success_s1 + first_success_s2 + first_success_s3 + first_success_s4 + first_success_s5) / 5
+
+lcb_success_s1 = np.load(
+    f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/RanNoise0.1/LCB/EnsSize_10_S1_success.npy")
+lcb_success = np.load(
+    f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/RanNoise0.1/LCB/EnsSize_10_S2_success.npy")
+lcb_success_s3 = np.load(
+    f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/RanNoise0.1/LCB/EnsSize_10_S3_success.npy")
+lcb_success_s4 = np.load(
+    f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/RanNoise0.1/LCB/EnsSize_10_S4_success.npy")
+lcb_success_s5 = np.load(
+    f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/RanNoise0.1/LCB/EnsSize_10_S5_success.npy")
+lcb_success_mean = (lcb_success_s1+lcb_success_s2+lcb_success_s3+lcb_success_s4+lcb_success_s5)/5
+
+mean_success_s1 = np.load(
+    f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/RanNoise0.1/Mean/EnsSize_10_S1_success.npy")
+mean_success_s2 = np.load(
+    f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/RanNoise0.1/Mean/EnsSize_10_S2_success.npy")
+mean_success_s3 = np.load(
+    f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/RanNoise0.1/Mean/EnsSize_10_S3_success.npy")
+mean_success_s4 = np.load(
+    f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/RanNoise0.1/Mean/EnsSize_10_S4_success.npy")
+mean_success_s5 = np.load(
+    f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/RanNoise0.1/Mean/EnsSize_10_S5_success.npy")
+mean_success_mean = (mean_success_s1 + mean_success_s2 + mean_success_s3 + mean_success_s4 + mean_success_s5) / 5
+
+plt.plot(x, first_success_s1[:10000:50], color='blue', alpha=0.2)
+plt.plot(x, first_success_s2[:10000:50], color='blue', alpha=0.2)
+plt.plot(x, first_success_s3[:10000:50], color='blue', alpha=0.2)
+plt.plot(x, first_success_s4[:10000:50], color='blue', alpha=0.2)
+plt.plot(x, first_success_s5[:10000:50], color='blue', alpha=0.2)
+
+plt.plot(x, lcb_success_s1[:10000:50], color='green', alpha=0.2)
+plt.plot(x, lcb_success_s2[:10000:50], color='green', alpha=0.2)
+plt.plot(x, lcb_success_s3[:10000:50], color='green', alpha=0.2)
+plt.plot(x, lcb_success_s4[:10000:50], color='green', alpha=0.2)
+plt.plot(x, lcb_success_s5[:10000:50], color='green', alpha=0.2)
+
+plt.plot(x, mean_success_s1[:10000:50], color='red', alpha=0.2)
+plt.plot(x, mean_success_s2[:10000:50], color='red', alpha=0.2)
+plt.plot(x, mean_success_s3[:10000:50], color='red', alpha=0.2)
+plt.plot(x, mean_success_s4[:10000:50], color='red', alpha=0.2)
+plt.plot(x, mean_success_s5[:10000:50], color='red', alpha=0.2)
+
+plt.plot(x, first_success_mean[:10000:50], color='blue', label='Qfilter')
+plt.plot(x, mean_success_mean[:10000:50], color='red', label='Mean')
+# plt.plot(x, min_score_s1[:10000:50], color='orange', label='Minimum')
+plt.plot(x, lcb_success_mean[:10000:50], color='green', label='LCB')
+plt.title('Success Rate')
+plt.xlabel('Environment interactions')
+plt.ylabel('Success Rate')
+plt.legend()
+plt.savefig('/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Figure/Slide/RanNoise0.1/success_multiseeds.png')
+plt.show()
+
 first_demoaccept_s1 = np.load(
     f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/RanNoise0.1/First/EnsSize_10_S1_demoaccept.npy")
 first_demoaccept_s2 = np.load(
@@ -202,8 +245,8 @@ lcb_demoaccept_s5 = np.load(
     f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/RanNoise0.1/LCB/EnsSize_10_S5_demoaccept.npy")
 lcb_demoaccept_mean =(lcb_demoaccept_s1+lcb_demoaccept_s2+lcb_demoaccept_s3+lcb_demoaccept_s4+lcb_demoaccept_s5)/5
 
-min_demoaccept_s1 = np.load(
-    f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/RanNoise0.1/Minimum/EnsSize_10_S1_demoaccept.npy")
+# min_demoaccept_s1 = np.load(
+#     f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/RanNoise0.1/Minimum/EnsSize_10_S1_demoaccept.npy")
 
 
 plt.plot(x, first_demoaccept_s1[:10000:50], color='blue', alpha=0.2)
@@ -224,7 +267,7 @@ plt.plot(x, lcb_demoaccept_s5[:10000:50], color='green', alpha=0.2)
 
 plt.plot(x, first_demoaccept_s1[:10000:50], color='blue', label='First')
 plt.plot(x, mean_demoaccept_s1[:10000:50], color='red', label='Mean')
-plt.plot(x, min_demoaccept_s1[:10000:50], color='orange', label='Minimum')
+# plt.plot(x, min_demoaccept_s1[:10000:50], color='orange', label='Minimum')
 plt.plot(x, lcb_demoaccept_s1[:10000:50], color='green', label='LCB')
 
 
