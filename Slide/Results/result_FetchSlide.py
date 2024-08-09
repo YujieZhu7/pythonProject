@@ -210,6 +210,18 @@ plt.savefig('/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/F
 plt.show()
 plt.close()
 
+Qfilter_s1 = np.load(
+    f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/StdQfilter/RanNoise0.1/Qfilter_S1_demoaccept.npy")
+Qfilter_s2 = np.load(
+    f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/StdQfilter/RanNoise0.1/Qfilter_S2_demoaccept.npy")
+Qfilter_s3 = np.load(
+    f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/StdQfilter/RanNoise0.1/Qfilter_S3_demoaccept.npy")
+Qfilter_s4 = np.load(
+    f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/StdQfilter/RanNoise0.1/Qfilter_S4_demoaccept.npy")
+Qfilter_s5 = np.load(
+    f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/StdQfilter/RanNoise0.1/Qfilter_S5_demoaccept.npy")
+Qfilter_mean = (Qfilter_s1 + Qfilter_s2 + Qfilter_s3 + Qfilter_s4 + Qfilter_s5) / 5
+
 first_demoaccept_s1 = np.load(
     f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/RanNoise0.1/First/EnsSize_10_S1_demoaccept.npy")
 first_demoaccept_s2 = np.load(
@@ -249,7 +261,11 @@ lcb_demoaccept_mean =(lcb_demoaccept_s1+lcb_demoaccept_s2+lcb_demoaccept_s3+lcb_
 # min_demoaccept_s1 = np.load(
 #     f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/RanNoise0.1/Minimum/EnsSize_10_S1_demoaccept.npy")
 
-
+plt.plot(x, Qfilter_s1[:10000:50], color='purple', alpha=0.2)
+plt.plot(x, Qfilter_s2[:10000:50], color='purple', alpha=0.2)
+plt.plot(x, Qfilter_s3[:10000:50], color='purple', alpha=0.2)
+plt.plot(x, Qfilter_s4[:10000:50], color='purple', alpha=0.2)
+plt.plot(x, Qfilter_s5[:10000:50], color='purple', alpha=0.2)
 plt.plot(x, first_demoaccept_s1[:10000:50], color='blue', alpha=0.2)
 plt.plot(x, first_demoaccept_s2[:10000:50], color='blue', alpha=0.2)
 plt.plot(x, first_demoaccept_s3[:10000:50], color='blue', alpha=0.2)
@@ -265,7 +281,7 @@ plt.plot(x, lcb_demoaccept_s2[:10000:50], color='green', alpha=0.2)
 plt.plot(x, lcb_demoaccept_s3[:10000:50], color='green', alpha=0.2)
 plt.plot(x, lcb_demoaccept_s4[:10000:50], color='green', alpha=0.2)
 plt.plot(x, lcb_demoaccept_s5[:10000:50], color='green', alpha=0.2)
-
+plt.plot(x, Qfilter_mean[:10000:50], color='purple', label='Qfilter')
 plt.plot(x, first_demoaccept_s1[:10000:50], color='blue', label='First')
 plt.plot(x, mean_demoaccept_s1[:10000:50], color='red', label='Mean')
 # plt.plot(x, min_demoaccept_s1[:10000:50], color='orange', label='Minimum')
