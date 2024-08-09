@@ -158,7 +158,7 @@ first_success_mean = (first_success_s1 + first_success_s2 + first_success_s3 + f
 
 lcb_success_s1 = np.load(
     f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/RanNoise0.1/LCB/EnsSize_10_S1_success.npy")
-lcb_success = np.load(
+lcb_success_s2 = np.load(
     f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/RanNoise0.1/LCB/EnsSize_10_S2_success.npy")
 lcb_success_s3 = np.load(
     f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/EnsQfilter/RanNoise0.1/LCB/EnsSize_10_S3_success.npy")
