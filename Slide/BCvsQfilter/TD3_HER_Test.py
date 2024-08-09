@@ -225,15 +225,15 @@ np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Resu
 np.save(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/Demo/TD3_HER_S{seed}_success", success_history)
 # np.savez(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/TD3_HER_S{seed}_meanvar",
 #          state_mean=state_stats[0], state_var=state_stats[1], goal_mean=goal_stats[0], goal_var=goal_stats[1])
-np.savez(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/Demo/TD3_HER_S{seed}_update",
-         state_count=states_agg[0], state_mean2=states_agg[1], state_M2=states_agg[-1],
-         goal_count=goals_agg[0], goal_mean2=goals_agg[1], goal_M2=goals_agg[-1])
+# np.savez(f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/Results/{env_name}/Demo/TD3_HER_S{seed}_update",
+#          state_count=states_agg[0], state_mean2=states_agg[1], state_M2=states_agg[-1],
+#          goal_count=goals_agg[0], goal_mean2=goals_agg[1], goal_M2=goals_agg[-1])
 
-torch.save(agent.actor.state_dict(),
-                                   f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/SaveModels/{env_name}/TD3_HER_expert_actor")
-torch.save(agent.actor_target.state_dict(),
-                                   f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/SaveModels/{env_name}/TD3_HER_expert_actortarget")
-torch.save(agent.critic.state_dict(),
-                                   f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/SaveModels/{env_name}/TD3_HER_expert_critic")
-torch.save(agent.critic_target.state_dict(),
-                                   f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/SaveModels/{env_name}/TD3_HER_expert_critictarget")
+# torch.save(agent.actor.state_dict(),
+#                                    f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/SaveModels/{env_name}/TD3_HER_expert_actor")
+# torch.save(agent.actor_target.state_dict(),
+#                                    f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/SaveModels/{env_name}/TD3_HER_expert_actortarget")
+# torch.save(agent.critic.state_dict(),
+#                                    f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/SaveModels/{env_name}/TD3_HER_expert_critic")
+# torch.save(agent.critic_target.state_dict(),
+#                                    f"/home/zhu_y@WMGDS.WMG.WARWICK.AC.UK/PycharmProjects/pythonProject/SaveModels/{env_name}/TD3_HER_expert_critictarget")
